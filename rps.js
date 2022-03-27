@@ -10,7 +10,6 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
     getresult();
 }));
 function chooseMove(){
-    console.log("duck.");
     const randomNum = Math.floor(Math.random() * possibleChoices.length) +1;
     switch(randomNum){
         case 1: 
