@@ -23,6 +23,7 @@ function chooseMove(){
         compChoice = "paper";
         break;
     }
+    compChoiceDisp.innerHTML=compChoice;
 }
 function getresult(){
         if(compChoice == userChoice){
