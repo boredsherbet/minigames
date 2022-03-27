@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+let tries = 0;
 const cardArray = [
   {
     name: "fries",
@@ -49,8 +51,14 @@ const cardArray = [
   },
 ];
 cardArray.sort(() => 0.5 - Math.random());
+
 const grid = document.querySelector("#grid");
 const result = document.querySelector("#result");
+const triesdisp = document.querySelector("#tries");
+let lastChosen = [];
+let lastChosenIds = [];
+const matches = [];
+
 function createBoard() {
   for (let i = 0; i < cardArray.length; i++) {
     const card = document.createElement("img");
@@ -61,18 +69,18 @@ function createBoard() {
   }
 }
 createBoard();
-let lastChosen = [];
-const lastChosenIds = [];
-const matches = [];
+
 function flipCard() {
   const cardId = this.getAttribute('data-id');
   this.setAttribute("src", cardArray[cardId].img);
   lastChosenIds.push(cardId);
   lastChosen.push(cardArray[cardId].name);
   if (lastChosen.length == 2) {
+    tries++;
+    triesdisp.innerHTML = tries;
     setTimeout(checkMatch, 500);
-    lastChosen;
   }
+
 }
 function checkMatch() {
   const cards = document.querySelectorAll("#grid img");
@@ -90,13 +98,18 @@ function checkMatch() {
     cards[lastChosenIds[1]].removeEventListener("click", flipCard);
     matches.push(lastChosen);
     lastChosen = [];
-    result.innerHTML = matches.length;
+    lastChosenIds = [];
+    result.innerHTML = matches.length; 
   } else{
     cards[lastChosenIds[0]].setAttribute("src", "memorycards/blank.png");
     cards[lastChosenIds[1]].setAttribute("src", "memorycards/blank.png");
+    lastChosen = [];
+    lastChosenIds = [];
+
   }
   if(matches.length==cardArray.length/2){
-      result.innerHTML = "You Won!"
+      result.innerHTML = "You Won!";
+      grid.innerHTML = "<img src=\"won.jpeg\" alt=\"You Won!\">";
   }
-  
 }
+});
