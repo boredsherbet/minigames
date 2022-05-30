@@ -5,7 +5,7 @@ const score = document.querySelector('#score');
 let result = 0;
 let molePos = 0;
 let currentTime = 60;
-
+let timerId = null;
 squares.forEach(square => {
     square.addEventListener('click', () => {
         if(square.classList.contains('mole')){
@@ -28,7 +28,6 @@ function placeMole() {
 }
 
 function moveMole (){
-    let timerId = null;
     timerId = setInterval(placeMole, 500);
     placeMole();
 }
