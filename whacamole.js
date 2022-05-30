@@ -1,18 +1,10 @@
 const squares = document.querySelectorAll('.square');
 const mole = document.querySelectorAll('.mole');
-const time = document.querySelector('#timeLeft');
+const time = document.querySelector('#time');
 const score = document.querySelector('#score');
 let result = 0;
 let molePos = 0;
 let currentTime = 60;
-function placeMole(){
-    squares.forEach(square => {
-        square.classList.remove('mole');
-    })
-    let randPos = squares(Math.floor(Math.random()*squares.length));
-    randPos.classList.add('mole');
-    molePos = randPos.id;
-}
 
 squares.forEach(square => {
     square.addEventListener('click', () => {
@@ -24,6 +16,17 @@ squares.forEach(square => {
     })
 })
 
+function placeMole() {
+  squares.forEach((square) => {
+    square.classList.remove("mole");
+  });
+
+  let randomSquare = squares[Math.floor(Math.random() * 9)];
+  randomSquare.classList.add("mole");
+
+  molePos = randomSquare.id;
+}
+
 function moveMole (){
     let timerId = null;
     timerId = setInterval(placeMole, 500);
@@ -31,13 +34,14 @@ function moveMole (){
 }
 
 function countDown(){
-    currentTime--;
-    timeLeft.textContent = currentTime;
-    if(currentTime = 0){
+    currentTime=currentTime-1;
+    time.textContent = currentTime;
+    if(currentTime == 0){
         clearInterval(countDownTimerId);
+        clearInterval(timerId);
         alert("Time's up b*tch..." + "You only got "+result+" points. ");
     }
 }
 //Method Calls. 
 moveMole();
-let countDownTimerId = setInterval(countDown, 1000)
+let countDownTimerId = setInterval(countDown, 1000);
