@@ -1,0 +1,37 @@
+.grid {
+    position: absolute;
+    width: 800px; 
+    height: 400px; 
+    border: solid black 1px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;    
+}
+.block {
+    position: absolute;
+    height: 20px;
+    background-color: blue;
+    border: solid white 5px;
+    /*So we'll use the CSS 
+    attributes left and bottom 
+    as positional identifiers 
+    for the block*/
+}
+.paddle{
+    position: absolute;
+    height: 20px;
+    background-color: purple;
+    border: solid white 5px;
+    width: 100px;
+}
+.ball{
+    position: absolute;
+    width:20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+.message{
+    font-size: 200px;
+    color: black;
+}
