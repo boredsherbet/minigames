@@ -1,0 +1,25 @@
+.menuItems{
+    list-style: none;
+    float: right;
+    display: flex;
+}
+.menuItems li {
+    padding: 10px;
+}
+.upperNav{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    width:75px;
+    height:75px;
+}
+.footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding:30px;
+    background-color: yellow;
+    
+}
